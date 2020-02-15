@@ -8,10 +8,4 @@ class Show < ActiveRecord::Base
             actor.first_name + " " + actor.last_name
         end
     end
-
-    def self.build_network(arg, x=self)
-        network = Network.new(arg)
-        network.shows << x
-    end
-
 end
