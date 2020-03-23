@@ -9,23 +9,18 @@ class Actor < ActiveRecord::Base
 
     def list_roles
         roles = []
-        x = 0
-        while x <= self.characters.length
-            if self.characters.find_by_id(x)
-                add_this = self.characters.find_by_id(x).name + " - " + self.characters.find_by_id(x).show.name
-                roles << add_this
-            end
-            x += 1
-        end
-        # self.characters do |character|
-        #     add_this = ""
-        #     #if character
-        #         add_this += character.name
-        #         add_this += " - "
-        #         add_this += character.show
-        #     #end
-        #     roles << add_this
+        # x = 0
+        # while x <= self.characters.length
+        #     if self.characters.find_by_id(x)
+        #         add_this = self.characters.find_by_id(x).name + " - " + self.characters.find_by_id(x).show.name
+        #         roles << add_this
+        #     end
+        #     x += 1
         # end
+        characters.each do |character|
+            add_this = character.name + " - " + character.show.name
+            roles << add_this
+        end
         roles 
     end
             
